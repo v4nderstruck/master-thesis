@@ -25,6 +25,11 @@ a single individual [Wiki][diffpriv]. DP techniques are actually use in practice
 by Google and Apple (privacy preserving user statistics). One may also apply
 advanced cryptographic techniques to achieve privacy (FHE, SMPC). 
 
+##  Vertical Federated Learning
+
+A general idea on how this can be done using a splitNN architecture.
+
+![svg](assets/splitNN.svg)
 
 [tut]: lit/tut.pdf
 [diffpriv]: https://en.wikipedia.org/wiki/Differential_privacy
