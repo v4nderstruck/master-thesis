@@ -156,7 +156,9 @@ Hence, we may also structure the thesis in a similar fashion. Note: it is probab
   - based on SplitNN architecture, the initial paper mimics that architecture already,
   although not in a federated setting. SplitNn will probably make federation
   simplier in terms of pure ML implementation work
-  - This will result in a joint model for participants
+  - This will result in a joint model for participants, we may however, allow
+  for later model weight sharing across participants (conceptionally like aggregtaion
+  architecture or white box attacker model) 
   - Goal: comapareable model utility to the non-federated model
   - Note: would need Dataset access to train it
 - we analyze the SplitNN architecture for privacy "risk"
