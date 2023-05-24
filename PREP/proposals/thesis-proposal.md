@@ -98,7 +98,7 @@ propose mitigation techniques.
 
 **Research Questions**
 
-In this thesis, we may explore the following research questions:
+We may explore the following research questions:
 
 - How can multi-modal transformers be trained in a vertical federated setting?
   - The initial paper derives good model performance from joint training of
@@ -112,12 +112,25 @@ In this thesis, we may explore the following research questions:
   mimics the original data
   - This may be reversible! Thus splitting the model "right where the encoder
   ends" is not privacy preserving at all which however is the way to do it for
-  "convectional" networks!
+  "conventional" networks!
   - Does it even open attacks across modalities due to positional encoding (e.g.
   radiographs to clinical data)?
   - Challenges: Model Inversion, Gradient Inversion attack on transformers
   - Note: Machine Learning heavy
-- 
+- Apply cryptographic protocols efficiently to model training
+  - We could use HE/MPC to protect intermediate results and gradients
+  - Challenges: efficiency tradeoff 
+  - Note: Cryptography protocol design
+- Apply DP and confusion strategies to model training
+  - Similar to above, but different techniques
+  - Should consider transformer specific techniques
+  - Challenges: accuracy tradeoff
+- measure the tradeoff in privacy, utility and efficiency
+- Combining DP and cryptographic protocols for hybrid model training?
+  - develop some automatic parameter selection system for trading off utility,
+  privacy and efficiency
+  - requires measurement
+
 
 [ref_survey_vfl]: https://www.sciencedirect.com/science/article/pii/S0950705121000381
 [ref_psi]: https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-pinkas.pdf
