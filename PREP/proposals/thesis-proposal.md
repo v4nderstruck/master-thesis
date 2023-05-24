@@ -87,6 +87,20 @@ techniques are based on masking sensitive information and providing randomized
 information. However, similar to differential privacy, these techniques may
 result in a loss of model accuracy **(privacy-utility tradeoff)**.
 
+
+**Transformers**
+
+Recently, transformers have proven to be a powerful architecture for machine
+learning in various domains. The initial paper proposes a multi-modal 
+transformer architecture for medical data (imaging and non-imaging). The
+architecture consumes input vectors of different modalities with positional
+encoding (that's what transformers do) and feed them into a transformer encoder
+where the attention mechanism is applied. The proposed architecture does not use
+a transformer decoder. Instead, the encoder output is fed into a multi-layer
+perceptron (MLP) for the prediction task. Due to the nature of transformer 
+encoding layers, 
+
+
 ## The Thesis
 
 **Goal**
@@ -121,7 +135,7 @@ We may explore the following research questions:
   - We could use HE/MPC to protect intermediate results and gradients
   - Challenges: efficiency tradeoff 
   - Note: Cryptography protocol design
-- Apply DP and confusion strategies to model training
+- Apply DP and other strategies to model training
   - Similar to above, but different techniques
   - Should consider transformer specific techniques
   - Challenges: accuracy tradeoff
@@ -131,9 +145,50 @@ We may explore the following research questions:
   privacy and efficiency
   - requires measurement
 
+**Possible Thesis Contributions**
+
+A lot of papers in that area are generally structured as follows:
+- they propose a model architecture and add privacy preserving techniques to it
+- they show that privacy is preserved by showing that attacks are less
+successful compared to no actions
+
+Hence, we may also structure the thesis in a similar fashion. Note: it is probably too much
+- we propose a multi modal transformer architecture in a federated setting
+  - based on SplitNN architecture, the initial paper mimics that architecture already,
+  although not in a federated setting. SplitNn will probably make federation
+  simplier in terms of pure ML implementation work
+  - This will result in a joint model for participants
+  - Goal: comapareable model utility to the non-federated model
+  - Note: would need Dataset access to train it
+- we analyze the SplitNN architecture for privacy "risk"
+  - in SplitNN setting, intermediate results and gradients are exchanged 
+  - we should consider the honest-but-curious adversary model (most common in
+  literature) without further protection techniques
+  - Hence, how much privacy does the Transformer architecture leak?
+  - Goal: show that data reconstruction and label inference is possible
+- we consider privacy distances / metrics for model training and evaluate for the SplitNN 
+  - in statistics, there are distances / metrics to express similarity of two
+  data distributions e.g. Kullback-Leibler divergence and more
+  - from these distances / metrics, we may derive optimality constraints (in
+  trade-offs for example) for privacy preserving techniques
+  - Goal: find meaningful privacy metrics
+- we incrementally optimize on the privacy-utility-efficiency trade off for
+model training based on given privacy metrics
+  - from the results above, we start by introducing architecture specific
+  counter measures to improve privacy (transformer specific). We will
+  experimentally escalate the counter measures to more sophisticated techniques 
+  in efficiency and utility dimensions to find optimal or at least good
+  trade-offs 
+  - Goal: show that privacy metrics can be used to optimize
+  privacy-utiliy-efficiency trade-off 
+
+
+
+
 
 [ref_survey_vfl]: https://www.sciencedirect.com/science/article/pii/S0950705121000381
 [ref_psi]: https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-pinkas.pdf
 [ref_survey_vfl_acm]: https://dl.acm.org/doi/pdf/10.1145/3298981
 [ref_preprint_vfl_acm]: https://arxiv.org/pdf/2304.01829.pdf
 [ref_yin_acm]: https://dl.acm.org/doi/pdf/10.1145/3460427
+[ref_vit_leak]: https://openaccess.thecvf.com/content/CVPR2022/papers/Hatamizadeh_GradViT_Gradient_Inversion_of_Vision_Transformers_CVPR_2022_paper.pdf
