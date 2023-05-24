@@ -97,8 +97,7 @@ architecture consumes input vectors of different modalities with positional
 encoding (that's what transformers do) and feed them into a transformer encoder
 where the attention mechanism is applied. The proposed architecture does not use
 a transformer decoder. Instead, the encoder output is fed into a multi-layer
-perceptron (MLP) for the prediction task. Due to the nature of transformer 
-encoding layers, 
+perceptron (MLP) for the prediction task. 
 
 
 ## The Thesis
